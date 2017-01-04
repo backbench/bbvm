@@ -1,5 +1,7 @@
 "use strict";
 
+var _ = require("lodash");
+
 var expect = require("chai").expect;
 
 var BetalBlob = require("../lib/blob/betal");
@@ -30,7 +32,71 @@ describe("Blob test", function() {
 
     describe("isBetal()", function() {
 
-        it("should return true for a betal", () => expect(Constants.BETAL_TRUE.isBetal()).to.be.true);
+        it("should return true for a betal", () => 
+
+            expect(_.every(_.map([Constants.BETAL_TRUE,
+                    Constants.BETAL_FALSE,
+                    Constants.BETAL_NULL], (betal) => betal.isBetal()))).to.be.true);
+
+    });
+
+    describe("isNumber()", function() {
+
+        it("should return false for a betal", () => 
+
+            expect(_.every(_.map([Constants.BETAL_TRUE,
+                    Constants.BETAL_FALSE,
+                    Constants.BETAL_NULL], (betal) => betal.isNumber()))).to.be.false);
+
+    });
+
+    describe("isString()", function() {
+
+        it("should return false for a betal", () => 
+
+            expect(_.every(_.map([Constants.BETAL_TRUE,
+                    Constants.BETAL_FALSE,
+                    Constants.BETAL_NULL], (betal) => betal.isString()))).to.be.false);
+
+    });
+
+    describe("isBinary()", function() {
+
+        it("should return false for a betal", () => 
+
+            expect(_.every(_.map([Constants.BETAL_TRUE,
+                    Constants.BETAL_FALSE,
+                    Constants.BETAL_NULL], (betal) => betal.isBinary()))).to.be.false);
+
+    });
+
+    describe("isList()", function() {
+
+        it("should return false for a betal", () => 
+
+            expect(_.every(_.map([Constants.BETAL_TRUE,
+                    Constants.BETAL_FALSE,
+                    Constants.BETAL_NULL], (betal) => betal.isList()))).to.be.false);
+
+    });
+
+    describe("isMap()", function() {
+
+        it("should return false for a betal", () => 
+
+            expect(_.every(_.map([Constants.BETAL_TRUE,
+                    Constants.BETAL_FALSE,
+                    Constants.BETAL_NULL], (betal) => betal.isMap()))).to.be.false);
+
+    });
+
+    describe("isFunction()", function() {
+
+        it("should return false for a betal", () => 
+
+            expect(_.every(_.map([Constants.BETAL_TRUE,
+                    Constants.BETAL_FALSE,
+                    Constants.BETAL_NULL], (betal) => betal.isFunction()))).to.be.false);
 
     });
 
