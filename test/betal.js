@@ -100,4 +100,14 @@ describe("Betal test", function() {
 
     });
 
+    describe("isNull()", function() {
+
+        it("should return true for a null betal", () => expect(Constants.BETAL_NULL.isNull()).to.be.true);
+
+        it("should return false for a false betal", () => expect(Constants.BETAL_FALSE.isNull()).to.be.false);
+
+        it("should return false for a true betal", () => expect(Constants.BETAL_TRUE.isNull()).to.be.false);    
+
+    });
+
 });
