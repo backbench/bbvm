@@ -28,4 +28,10 @@ describe("Blob test", function() {
 
     });
 
+    describe("isBetal()", function() {
+
+        it("should return true for a betal", () => expect(Constants.BETAL_TRUE.isBetal()).to.be.true);
+
+    });
+
 });
