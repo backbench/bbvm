@@ -1,0 +1,26 @@
+{
+  "name": "bbvm",
+  "version": "1.0.0",
+  "description": "Backbench Virtual Machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/backbench/bbvm.git"
+  },
+  "author": "Backbench",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/backbench/bbvm/issues"
+  },
+  "homepage": "https://github.com/backbench/bbvm#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
