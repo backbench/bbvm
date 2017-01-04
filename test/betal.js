@@ -24,6 +24,10 @@ describe("Betal test", function() {
 
         describe("should throw an error otherwise", () => {
 
+            it("checking with string 'hello'", () =>
+
+                expect(() => new BetalBlob("hello")).to.throw(Error));
+
             it("checking with boolean true", () => 
 
                 expect(() => new BetalBlob(true)).to.throw(Error));
