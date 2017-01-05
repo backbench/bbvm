@@ -32,49 +32,26 @@ describe("Number test", function() {
 
         describe("should throw an error otherwise", () => {
 
-            it("checking with string 'hello'", () =>
+            let invalids = ["hello", NaN, Infinity, true, [1,2,3], {x: 1, y: 2}];
 
-                expect(() => new NumberBlob("hello")).to.throw(Error));
+            _.each(invalids, (invalid) =>
 
-            it("checking with NaN", () => 
+                it("checking with " + (typeof invalid) + ": " +  invalid.toString(), () =>
 
-                expect(() => new NumberBlob(NaN)).to.throw(Error));
-
-            it("checking with Infinity", () => 
-
-                expect(() => new NumberBlob(Infinity)).to.throw(Error));
-
-            it("checking with boolean true", () => 
-
-                expect(() => new NumberBlob(true)).to.throw(Error));
-
-            it("checking with list [1,2,3]", () => 
-
-                expect(() => new NumberBlob([1,2,3])).to.throw(Error));
-
-            it("checking with map {x: 1, y: 2}", () => 
-
-                expect(() => new NumberBlob({x: 1, y: 2})).to.throw(Error));
-
+                    expect(() => new NumberBlob(invalid)).to.throw(Error)));
         });
 
     });
 
     describe("stringRep()", function() {
 
-        it("should return 0 for the number 0", () => expect(new NumberBlob("0").stringRep()).to.equal("0"));
 
-        it("should return -1 for the number -1", () => expect(new NumberBlob("-1").stringRep()).to.equal("-1"));
+        let nums = [0, -1, 14.25, "-9.889", 14.25e2, "314e-2", -14.25e2, -3.14e-2];
 
-        it("should return 42 for the number 42", () => expect(new NumberBlob("42").stringRep()).to.equal("42"));
+        _.each(nums, (num) =>
 
-        it("should return 1.223 for the number 1223e-3", 
+            it("checking with " + num, () => expect(new NumberBlob(num).stringRep()).to.equal(_.toNumber(num).toString())));
 
-            () => expect(new NumberBlob("1223e-3").stringRep()).to.equal("1.223"));
-
-        it("should return -1425 for the number -1.425e3", 
-
-            () => expect(new NumberBlob("-1.425e3").stringRep()).to.equal("-1425"));
     });
 
     describe("isTruthy()", function() {
