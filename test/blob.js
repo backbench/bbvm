@@ -60,16 +60,6 @@ describe("Blob test", function() {
 
     });
 
-    describe("isBinary()", function() {
-
-        it("should return false for a betal", () => 
-
-            expect(_.every(_.map([Constants.BETAL_TRUE,
-                    Constants.BETAL_FALSE,
-                    Constants.BETAL_NULL], (betal) => betal.isBinary()))).to.be.false);
-
-    });
-
     describe("isList()", function() {
 
         it("should return false for a betal", () => 
