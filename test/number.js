@@ -12,7 +12,7 @@ describe("Number test", function() {
 
     describe("Constructor", function() {
 
-        describe("should accept a valid number", function() {
+        describe("Should accept a valid number", function() {
 
             let nums = [0, -1, 14.25, -9.889, 14.25e2, 314e-2, -14.25e2, -3.14e-2];
 
@@ -21,7 +21,7 @@ describe("Number test", function() {
                 it("checking with " + num, () => expect(() => new NumberBlob(num)).to.be.ok));
         });
 
-        describe("should accept a valid number as string", function() {
+        describe("Should accept a valid number as string", function() {
 
             let nums = ["0", "-1", "14.25", "-9.889", "14.25e2", "314e-2", "-14.25e2", "-3.14e-2"];
 
@@ -30,7 +30,7 @@ describe("Number test", function() {
                 it("checking with '" + num + "'", () => expect(() => new NumberBlob(num)).to.be.ok));
         });
 
-        describe("should throw an error otherwise", () => {
+        describe("Should throw an error otherwise", () => {
 
             let invalids = ["hello", NaN, Infinity, true, [1,2,3], {x: 1, y: 2}];
 
@@ -60,7 +60,7 @@ describe("Number test", function() {
 
             expect(Constants.NUMBER_ZERO.isTruthy()).to.be.false);
 
-        describe("should return true otherwise", function() {
+        describe("Should return true otherwise", function() {
 
             let nums = ["-1", "1", "14.25", "-23.22", "1.23e4", "1.33e-6"];
 
