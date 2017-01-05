@@ -72,7 +72,7 @@ describe("Number test", function() {
 
     });
 
-    describe("getValue()", function() {
+    describe("numberRep()", function() {
 
         let nums = ["0", "1", "-34", "14.25", "-9.889", "14.23e3", "314e-2", "-14.33e4", "-3140e-3"];
 
@@ -80,7 +80,7 @@ describe("Number test", function() {
 
             let value = _.toNumber(num);
 
-            it("NumberBlob(\"" + num + "\") => " + value, () => expect(new NumberBlob(num).getValue()).to.equal(value));
+            it("NumberBlob(\"" + num + "\") => " + value, () => expect(new NumberBlob(num).numberRep()).to.equal(value));
 
         });
 

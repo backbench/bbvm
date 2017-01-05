@@ -22,7 +22,7 @@ describe("binaryOpPlus test", function() {
         
         let sums = _.map(inputs, (input) => binaryOpPlus(new NumberBlob(input.l), new NumberBlob(input.r)));
 
-        let check = _.map(sums, (sum, i) => sum.getValue() === inputs[i].l + inputs[i].r);
+        let check = _.map(sums, (sum, i) => sum.numberRep() === inputs[i].l + inputs[i].r);
 
         expect(_.every(check)).to.be.true;
 
