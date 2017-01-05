@@ -6,6 +6,8 @@ var expect = require("chai").expect;
 
 var NumberBlob = require("../lib/blob/number");
 
+var StringBlob = require("../lib/blob/string");
+
 var Constants = require("../lib/blob/constants");
 
 var binaryOpPlus = require("../lib/ops/binaryOps").binaryOpPlus;
@@ -23,6 +25,22 @@ describe("binaryOpPlus test", function() {
         let sums = _.map(inputs, (input) => binaryOpPlus(new NumberBlob(input.l), new NumberBlob(input.r)));
 
         let check = _.map(sums, (sum, i) => sum.numberRep() === inputs[i].l + inputs[i].r);
+
+        expect(_.every(check)).to.be.true;
+
+    });
+
+    it("string + string must concatenate the strings", function() {
+
+        let inputs = [
+            {l: "hello", r: "world"}, {l: "", r: "world"}, {l: "hello", r: ""}
+        ];
+
+        let concats = _.map(inputs, (input) => binaryOpPlus(new StringBlob(input.l), new StringBlob(input.r)));
+
+        let check = _.map(concats, (concat, i) => 
+
+            concat.stringRep() === new StringBlob(inputs[i].l.concat(inputs[i].r)).stringRep());
 
         expect(_.every(check)).to.be.true;
 
