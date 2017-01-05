@@ -91,4 +91,18 @@ describe("Number test", function() {
 
     });
 
+    describe("getValue()", function() {
+
+        let nums = ["0", "1", "-34", "14.25", "-9.889", "14.23e3", "314e-2", "-14.33e4", "-3140e-3"];
+
+        _.each(nums, function(num) {
+
+            var value = _.toNumber(num);
+
+            it("NumberBlob(\"" + num + "\") => " + value, () => expect(new NumberBlob(num).getValue()).to.equal(value));
+
+        });
+
+    });
+
 });
