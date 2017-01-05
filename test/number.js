@@ -12,24 +12,22 @@ describe("Number test", function() {
 
     describe("Constructor", function() {
 
-        describe("should accept a number as string", function() {
+        describe("should accept a valid number", function() {
 
-            it("checking with '0'", () => expect(new NumberBlob("0")).to.be.ok);
-            
-            it("checking with '1'", () => expect(new NumberBlob("1")).to.be.ok);
+            let nums = [0, -1, 14.25, -9.889, 14.25e2, 314e-2, -14.25e2, -3.14e-2];
 
-            it("checking with '14.25'", () => expect(new NumberBlob("14.25")).to.be.ok);
+            _.each(nums, (num) =>
 
-            it("checking with '14.25e2'", () => expect(new NumberBlob("14.25")).to.be.ok);
+                it("checking with " + num, () => expect(() => new NumberBlob(num)).to.be.ok));
+        });
 
-            it("checking with '14.25e-2'", () => expect(new NumberBlob("14.25e-2")).to.be.ok);
+        describe("should accept a valid number as string", function() {
 
-            it("checking with '-14.25'", () => expect(new NumberBlob("-14.25")).to.be.ok);
+            let nums = ["0", "-1", "14.25", "-9.889", "14.25e2", "314e-2", "-14.25e2", "-3.14e-2"];
 
-            it("checking with '-14.25e2'", () => expect(new NumberBlob("-14.25e2")).to.be.ok);
+            _.each(nums, (num) =>
 
-            it("checking with '-14.25e-2'", () => expect(new NumberBlob("-14.25e-2")).to.be.ok);
-
+                it("checking with '" + num + "'", () => expect(() => new NumberBlob(num)).to.be.ok));
         });
 
         describe("should throw an error otherwise", () => {
@@ -38,13 +36,17 @@ describe("Number test", function() {
 
                 expect(() => new NumberBlob("hello")).to.throw(Error));
 
+            it("checking with NaN", () => 
+
+                expect(() => new NumberBlob(NaN)).to.throw(Error));
+
+            it("checking with Infinity", () => 
+
+                expect(() => new NumberBlob(Infinity)).to.throw(Error));
+
             it("checking with boolean true", () => 
 
                 expect(() => new NumberBlob(true)).to.throw(Error));
-
-            it("checking with number 0", () => 
-
-                expect(() => new NumberBlob(0)).to.throw(Error));
 
             it("checking with list [1,2,3]", () => 
 
@@ -83,7 +85,9 @@ describe("Number test", function() {
 
         describe("should return true otherwise", function() {
 
-            _.each(["-1", "1", "14.25", "-23.22", "1.23e4", "1.33e-6"], (num) => 
+            let nums = ["-1", "1", "14.25", "-23.22", "1.23e4", "1.33e-6"];
+
+            _.each(nums, (num) => 
 
                 it("checking with " + num, () => expect(new NumberBlob(num).isTruthy()).to.be.true));
 
@@ -97,7 +101,7 @@ describe("Number test", function() {
 
         _.each(nums, function(num) {
 
-            var value = _.toNumber(num);
+            let value = _.toNumber(num);
 
             it("NumberBlob(\"" + num + "\") => " + value, () => expect(new NumberBlob(num).getValue()).to.equal(value));
 
