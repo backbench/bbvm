@@ -96,4 +96,48 @@ describe("List test", function() {
 
     });
 
+    describe("getItems()", function() {
+
+        let lists = [
+                [Constants.BETAL_NULL, Constants.BETAL_FALSE, Constants.BETAL_TRUE],
+                [Constants.STRING_EMPTY, Constants.NUMBER_ZERO],
+                [new ListBlob([]), new ListBlob([Constants.NUMBER_ZERO, Constants.BETAL_NULL])]
+            ];
+
+        it("should return the elements in order", function() {            
+
+            let check = _.map(lists, (list) => _.isEqual(new ListBlob(list).getItems(), list));
+
+            expect(_.every(check)).to.be.true;
+
+        });
+
+        it("should return a read-only copy", function() {
+
+            let check = _.map(lists, function(list) {
+
+                let listBlob = new ListBlob(list);
+
+                let items = listBlob.getItems();
+
+                let copy = _.cloneDeep(items);
+
+                //Modify items
+                items.push(3);
+
+                items.push("hello");
+
+                //Make sure the list is still unchanged
+
+                return _.isEqual(listBlob.getItems(), copy);
+
+
+            });
+
+            expect(_.every(check)).to.be.true;
+
+        });
+
+    });
+
 });
