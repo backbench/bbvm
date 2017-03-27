@@ -1,7 +1,5 @@
 "use strict";
 
-module.exports = {
+var lambdaHandler = require("./lib/LambdaHandler");
 
-    BetalBlob: require("./lib/blob/betal")
-
-};
+module.exports.handler = lambdaHandler;
