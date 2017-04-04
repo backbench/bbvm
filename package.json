@@ -23,6 +23,7 @@
   "dependencies": {
     "async-waterfall": "^0.1.5",
     "lodash": "^4.17.4",
+    "mustache": "^2.3.0",
     "request": "^2.81.0"
   }
 }
