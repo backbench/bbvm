@@ -15,3 +15,16 @@ deploy:
     on:
       repo: "backbench/bbvm"
       branch: "stage-alpha"
+  - provider: lambda
+    function_name: "bbvm"
+    role: $BBVM_LAMBDA_ROLE
+    runtime: "nodejs6.10"
+    module_name: "index"
+    handler_name: "handler"
+    memory_size: "1024"
+    timeout: "15"
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    on:
+      repo: "backbench/bbvm"
+      branch: "stage-alpha"
