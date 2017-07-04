@@ -22,7 +22,7 @@ deploy:
     module_name: "index"
     handler_name: "handler"
     memory_size: "1024"
-    timeout: "15"
+    timeout: "120"
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     on:
