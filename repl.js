@@ -36,7 +36,7 @@ module.exports.handler = function(event, context, callback) {
                 ExpressionProcessor.processExpression(expression, localContext, globalContext).then(function(result) {
                     callback(undefined, {
                         status: "ok",
-                        result: codec.encode(result),
+                        result: event.json ? utils.toJson(result) : codec.encode(result),
                         jar: codec.jarToJson(localContext.jar)
                     });
                 });
