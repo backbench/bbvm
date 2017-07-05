@@ -1,6 +1,7 @@
 "use strict";
 
 var request = require("request");
+var utils = require("./lib/utils");
 var codec = require("./lib/codec");
 var GlobalContext = require("./lib/GlobalContext");
 var ExpressionProcessor = require("./lib/processors/ExpressionProcessor");
@@ -24,7 +25,6 @@ module.exports.handler = function(event, context, callback) {
             source: "(" + expressionSource + ")"
         }
     }, function(err, res, body) {
-
         if(err) {
             callback(undefined, {
                 status: "error",
