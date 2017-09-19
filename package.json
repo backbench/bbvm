@@ -22,7 +22,7 @@
     "aws-sdk": "^2.79.0",
     "fill-range": "^4.0.0",
     "lodash": "^4.17.4",
-    "msgpack5": "^3.4.1",
+    "msgpack5": "^3.5.0",
     "mustache": "^2.3.0",
     "request": "^2.81.0"
   }
